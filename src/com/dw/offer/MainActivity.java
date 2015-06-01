@@ -1,9 +1,12 @@
 package com.dw.offer;
 
+import java.util.List;
+
+import cn.waps.AdInfo;
+import cn.waps.AppConnect;
 import android.app.Activity;
 import android.os.Bundle;
-
-import com.dw.offer.R;
+import android.view.View;
 
 public class MainActivity extends Activity {
 
@@ -23,5 +26,23 @@ public class MainActivity extends Activity {
 	public void onBackPressed() {
 		 AdSupport.exitAd(this);
 	}
-
+	public  void adList(View v){
+		
+		
+		List<AdInfo> list= AppConnect.getInstance(this).getAdInfoList();
+		AppConnect.getInstance(this).downloadAd(this, "da04f5e44e0436599cab4c7bf613259b");
+		if(list!=null){
+		AdInfo ad=list.get(0);
+		
+		System.out.println(ad.toString());
+		}
+	}
+	public void download(View v){
+		AdSupport.downloadApk();
+		
+	}
+	public void allApp(View v){
+		AdSupport.allApp();
+		
+	}
 }
